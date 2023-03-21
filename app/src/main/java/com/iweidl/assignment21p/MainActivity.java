@@ -11,6 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.EditText;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class MainActivity extends AppCompatActivity {
     EditText editTextValue;
     Button buttonConvert;
@@ -46,55 +49,72 @@ public class MainActivity extends AppCompatActivity {
 
     private double ConvertUnit(double value, String sourceUnit, String destinationUnit)
     {
+        double result = 0;
         if ("inches".equals(sourceUnit)) {
             switch (destinationUnit) {
                 case "inches":
-                    return value;
+                    result = value;
+                    break;
                 case "centimeters":
-                    return value * 2.54;
+                    result = value * 2.54;
+                    break;
             }
         }
         else if ("centimeters".equals(sourceUnit)) {
             switch (destinationUnit) {
                 case "inches":
-                    return value / 2.54;
+                    result = value / 2.54;
+                    break;
                 case "centimeters":
-                    return value;
+                    result = value;
+                    break;
             }
         }
         else if ("pounds".equals(sourceUnit)) {
             switch (destinationUnit) {
                 case "pounds":
-                    return value;
+                    result = value;
+                    break;
                 case "kilograms":
-                    return value * 0.453592;
+                    result = value * 0.453592;
+                    break;
             }
         }
         else if ("kilograms".equals(sourceUnit)) {
             switch (destinationUnit) {
                 case "pounds":
-                    return value / 0.453592;
+                    result = value / 0.453592;
+                    break;
                 case "kilograms":
-                    return value;
+                    result = value;
+                    break;
             }
         }
         else if ("Celsius".equals(sourceUnit)) {
             switch (destinationUnit) {
                 case "Celsius":
-                    return value;
+                    result = value;
+                    break;
                 case "Fahrenheit":
-                    return (value * 1.8) + 32;
+                    result = (value * 1.8) + 32;
+                    break;
             }
         }
         else if ("Fahrenheit".equals(sourceUnit)) {
             switch (destinationUnit) {
                 case "Celsius":
-                    return (value - 32) / 1.8;
+                    result = (value - 32) / 1.8;
+                    break;
                 case "Fahrenheit":
-                    return value;
+                    result = value;
+                    break;
             }
         }
 
-        return 0;
+        // Setting precision of a double is very hard to do, because it's stored in binary.
+        // Convert to BigDecimal so we can easily round.
+        BigDecimal bigDecimal = BigDecimal.valueOf(result);
+        bigDecimal = bigDecimal.setScale(3, RoundingMode.HALF_UP);
+        return bigDecimal.doubleValue();
     }
 }
