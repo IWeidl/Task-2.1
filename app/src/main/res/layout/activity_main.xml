@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:textAlignment="center"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/labelWantToConvert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:text="I want to convert"
+        android:textAlignment="viewStart" />
+
+    <EditText
+        android:id="@+id/editTextValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textAlignment="center" />
+
+    <Spinner
+        android:id="@+id/spinnerSourceUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/unit_array"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        android:layout_marginVertical="16dp"
+        />
+
+    <TextView
+        android:id="@+id/labelTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:text="to"
+        android:textAlignment="viewStart"
+        android:textSize="14sp" />
+
+    <Spinner
+        android:id="@+id/spinnerDestinationUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/unit_array"
+        android:textAlignment="center"
+        android:layout_marginVertical="16dp"
+        />
+
+    <Button
+        android:id="@+id/buttonConvert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CONVERT"
+        android:layout_marginVertical="16dp"/>
+
+    <TextView
+        android:id="@+id/labelConvertedValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="96sp"
+        android:textStyle="bold"
+        android:layout_marginVertical="16dp"
+        />
+
+    <TextView
+        android:id="@+id/labelConvertedUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="inches"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+</LinearLayout>
